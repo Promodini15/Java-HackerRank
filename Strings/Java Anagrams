@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Solution {
+ static String sort(String s){
+     s=s.toLowerCase();
+     char c[]=s.toCharArray();
+     char c1;
+     for(int i=0;i<s.length()-1;i++){
+         for(int j=i+1;j<s.length();j++){
+             if(c[i]>c[j]){
+                 c1=c[i];
+                 c[i]=c[j];
+                 c[j]=c1;
+             }
+         }
+     }    
+     return new String(c);
+ }
+    static boolean isAnagram(String a, String b) {
+        if(a.length()!=b.length()){
+            return false;
+        }
+       String a1= sort(a);
+       String b1=sort(b);
+       return a1.equals(b1);
+            }
+  public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
